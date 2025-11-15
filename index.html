@@ -1,1 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization: Title and Meta Description -->
+    <title>Daman Game Strategy Simulator & Login Helper</title>
+    <meta name="description" content="Practice your Daman Game strategy risk-free with our interactive simulator. Test your predictions, manage your bankroll, and prepare to play. Find the official Daman Game login and download link here.">
+    <meta name="keywords" content="daman game, daman games, daman game login, daman game strategy, daman game predictor, daman game tool, colour prediction">
+    
+    <!-- The canonical URL should be the GitHub Pages URL once deployed -->
+    <!-- Example: <link rel="canonical" href="https://your-username.github.io/daman-game-tool/" /> -->
 
+    <!-- Internal CSS: All styling is contained within this file -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --bg-color: #1a1a2e;
+            --card-bg: #16213e;
+            --primary-color: #0f3460;
+            --secondary-color: #e94560;
+            --text-color: #e0e0e0;
+            --text-muted: #a7a9be;
+            --green: #2ecc71;
+            --red: #e74c3c;
+            --border-color: rgba(224, 224, 224, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        header p a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .tool-section {
+            background-color: var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            color: white;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        #startGameBtn { background-color: var(--secondary-color); }
+        .bet-btn-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        #betRedBtn { background-color: var(--red); }
+        #betGreenBtn { background-color: var(--green); }
+
+        #gameArea { display: none; }
+        
+        .stats-display {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 20px;
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .stats-display h3 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        
+        .stats-display p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        #resultDisplay {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        #logArea {
+            margin-top: 20px;
+        }
+        
+        #logArea h3 {
+            margin-bottom: 10px;
+        }
+        
+        #logList {
+            height: 200px;
+            overflow-y: auto;
+            background-color: var(--bg-color);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+        }
+        
+        #logList p {
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .win { color: var(--green); }
+        .loss { color: var(--red); }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 30px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .cta-button {
+            background-color: var(--green);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Daman Game Strategy Simulator</h1>
+            <p>Practice your colour prediction strategy risk-free. A tool for players of the official 
+            <a href="https://damanofficialgame.com/" target="_blank" rel="noopener noreferrer">Daman Game</a>.</p>
+        </header>
+
+        <main>
+            <!-- Setup Section -->
+            <div id="setupArea" class="tool-section">
+                <h2>1. Setup Your Game</h2>
+                <div class="form-group">
+                    <label for="startBalance">Enter Your Starting Practice Balance:</label>
+                    <input type="number" id="startBalance" placeholder="e.g., 1000" value="1000">
+                </div>
+                <button id="startGameBtn" class="button">Start / Reset Simulation</button>
+            </div>
+
+            <!-- Game Area -->
+            <div id="gameArea" class="tool-section">
+                <h2>2. Place Your Bets</h2>
+                <div class="stats-display">
+                    <div>
+                        <h3>Current Balance</h3>
+                        <p id="currentBalanceDisplay">₹1000</p>
+                    </div>
+                    <div>
+                        <h3>Recommended Bet (5%)</h3>
+                        <p id="recommendedBetDisplay">₹50</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="betAmount">Enter Bet Amount:</label>
+                    <input type="number" id="betAmount" placeholder="e.g., 100">
+                </div>
+                <div class="bet-btn-container">
+                    <button id="betRedBtn" class="button">Bet on Red</button>
+                    <button id="betGreenBtn" class="button">Bet on Green</button>
+                </div>
+                <div id="resultDisplay"></div>
+            </div>
+
+            <!-- Log Section -->
+            <div id="logArea" class="tool-section">
+                <h2>3. Game History</h2>
+                <div id="logList"><p>Your game log will appear here...</p></div>
+            </div>
+
+            <!-- Call-to-Action / Backlink Section -->
+            <div class="cta-section">
+                <h2>Ready to Play for Real?</h2>
+                <p>You've practiced your strategy. Now, use your skills on the official platform.</p>
+                <br>
+                <a href="https://damanofficialgame.com/" target="_blank" rel="noopener noreferrer" class="button cta-button">
+                    Official Daman Game Login & Download
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Internal JavaScript: All functionality is contained within this file -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const setupArea = document.getElementById('setupArea');
+            const gameArea = document.getElementById('gameArea');
+            const startBalanceInput = document.getElementById('startBalance');
+            const startGameBtn = document.getElementById('startGameBtn');
+            const currentBalanceDisplay = document.getElementById('currentBalanceDisplay');
+            const recommendedBetDisplay = document.getElementById('recommendedBetDisplay');
+            const betAmountInput = document.getElementById('betAmount');
+            const betRedBtn = document.getElementById('betRedBtn');
+            const betGreenBtn = document.getElementById('betGreenBtn');
+            const resultDisplay = document.getElementById('resultDisplay');
+            const logList = document.getElementById('logList');
+
+            let balance = 0;
+            let round = 0;
+            let isGameActive = false;
+
+            startGameBtn.addEventListener('click', () => {
+                const startBalance = parseFloat(startBalanceInput.value);
+                if (isNaN(startBalance) || startBalance <= 0) {
+                    alert('Please enter a valid starting balance.');
+                    return;
+                }
+                balance = startBalance;
+                round = 0;
+                isGameActive = true;
+                logList.innerHTML = '<p>New simulation started. Good luck!</p>';
+                resultDisplay.innerHTML = '';
+                resultDisplay.style.backgroundColor = 'transparent';
+                updateUI();
+                gameArea.style.display = 'block';
+            });
+            
+            betRedBtn.addEventListener('click', () => playRound('Red'));
+            betGreenBtn.addEventListener('click', () => playRound('Green'));
+
+            function playRound(playerChoice) {
+                if (!isGameActive) {
+                    alert('Please start a new game first.');
+                    return;
+                }
+
+                const betAmount = parseFloat(betAmountInput.value);
+                if (isNaN(betAmount) || betAmount <= 0) {
+                    alert('Please enter a valid bet amount.');
+                    return;
+                }
+                if (betAmount > balance) {
+                    alert('Your bet cannot exceed your current balance.');
+                    return;
+                }
+
+                round++;
+                const outcome = Math.random() < 0.5 ? 'Red' : 'Green';
+                let logMessage = '';
+
+                if (playerChoice === outcome) {
+                    // Win
+                    balance += betAmount;
+                    resultDisplay.textContent = `Outcome was ${outcome}. You WON ₹${betAmount}!`;
+                    resultDisplay.style.backgroundColor = 'rgba(46, 204, 113, 0.2)';
+                    logMessage = `<p class="win"><strong>Round ${round}:</strong> Bet ₹${betAmount} on ${playerChoice}. Outcome: ${outcome}. ✅ You Won.</p>`;
+                } else {
+                    // Loss
+                    balance -= betAmount;
+                    resultDisplay.textContent = `Outcome was ${outcome}. You LOST ₹${betAmount}.`;
+                    resultDisplay.style.backgroundColor = 'rgba(231, 76, 60, 0.2)';
+                    logMessage = `<p class="loss"><strong>Round ${round}:</strong> Bet ₹${betAmount} on ${playerChoice}. Outcome: ${outcome}. ❌ You Lost.</p>`;
+                }
+                
+                if(logList.querySelector('p').textContent.includes('Your game log will appear here...')){
+                    logList.innerHTML = '';
+                }
+                
+                logList.insertAdjacentHTML('afterbegin', logMessage);
+                updateUI();
+                
+                if (balance <= 0) {
+                    isGameActive = false;
+                    resultDisplay.textContent = 'Game Over! Your balance is zero. Please start a new simulation.';
+                    resultDisplay.style.backgroundColor = 'rgba(233, 69, 96, 0.5)';
+                }
+            }
+
+            function updateUI() {
+                currentBalanceDisplay.textContent = `₹${balance.toFixed(2)}`;
+                const recommendedBet = (balance * 0.05).toFixed(2);
+                recommendedBetDisplay.textContent = `₹${recommendedBet}`;
+            }
+        });
+    </script>
+</body>
+</html>
